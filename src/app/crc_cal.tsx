@@ -15,9 +15,8 @@ function crc8Maxim(data: Uint8Array): number {
         res <<= 1;
       }
     }
+    res %= 256;
   }
-
-  res %= 256;
 
   console.debug(res.toString(16));
 
@@ -30,7 +29,7 @@ function parseHexList(str: string): number[] {
 }
 
 function parseByteList(str: string): Uint8Array {
-  const bytes = str.split(" ");
+  const bytes = str.trim().split(" ");
   const uint8arr = new Uint8Array(bytes.length);
 
   bytes.forEach((byte, index) => {
